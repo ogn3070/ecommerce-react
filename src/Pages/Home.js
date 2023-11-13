@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BiSearchAlt2 } from "react-icons/bi";
+// import { BiSearchAlt2 } from "react-icons/bi";
 import Productcard from "../Common/Productcard";
 import axios from "axios";
 
@@ -11,8 +11,9 @@ function Home() {
   
   useEffect(() =>{
 
-    axios.get("https://fakestoreapi.com/products?limit=18")
-    .then((res) => setProducts(res.data));
+    axios.get("https://api.escuelajs.co/api/v1/products?offset=0&limit=12")
+    .then((res) => setProducts(res.data))
+    .catch((err) => console.log(err))
 
   }, [])
   // when we need to write multiples lines of codes
@@ -47,33 +48,22 @@ function Home() {
   // ]
 
   return (
-    <div>
-      <div className="products container p-5">
-        <h4 className="h1">Hot Offer</h4>
+    
+
+
+  <div>
+    <div className="products container p-5">
         <div className="row mt-5 g-4 ">
-          {/* <div className="col-md-4">
-            <Productcard />
-          </div>
 
-          <div className="col-md-4">
-            <Productcard />
-          </div>
-
-          <div className="col-md-4">
-            <Productcard />
-          </div>
-
-        </div> */}
-
-        {products.map((item) =>(
-          <div key={item.id} className="col-md-4 col-sm-12">
-          <Productcard data={item}/>
-          </div>
-        ))}
-      </div>
+          {products.map((item) =>(
+            <div key={item.id} className="col-md-4 col-sm-12">
+            <Productcard data={item}/>
+            </div>
+          ))}
+        </div>
     </div>
 
-    </div>
+  </div>
   );
 }
 

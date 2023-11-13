@@ -32,7 +32,12 @@ span {
 nav{
   color: "blue" !important;
   font-size: medium;
-  ;
+}
+
+.nav2 {
+  font-size: medium;
+  font-weight: bold;
+  
 }
 
 .form > input{

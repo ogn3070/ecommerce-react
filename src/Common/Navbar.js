@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { BsCart4 } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 function Navbar() {
-  const [total, setTotal] = useState(0);
-  function change() {
-    setTotal(total + 1);
-  }
+
+  const total = useSelector((state) => state.cart.total)
+
 
   return (
     <div>
@@ -55,18 +55,21 @@ function Navbar() {
             <div className="">
               <form className="form w-50 m-auto  d-flex ">
                 <input
-                  type="search" placeholder="Search on Anikorb"
+                  type="search"
+                  placeholder="Search on Anikorb"
                   // onClick={() => lu()}
-                  className="form-control" style={{width:"50vw"}}
+                  className="form-control"
+                  style={{ width: "50vw" }}
                 />
-                {/* <button
-                  type="button"
-                  // onDoubleClick={() => calculate()}
-                  className="btn " style={{backgroundColor:"rgb(255,192,203)"}}
-                > */}
-                  <BiSearchAlt2 size={30} style={{
-                  color: "rgb(255,192,203)", marginLeft:"-25px", position:"relative", bottom:"-1px"}} />
-                {/* </button> */}
+                <BiSearchAlt2
+                  size={30}
+                  style={{
+                    color: "rgb(255,192,203)",
+                    marginLeft: "-25px",
+                    position: "relative",
+                    bottom: "-1px",
+                  }}
+                />
               </form>
             </div>
 
@@ -90,21 +93,69 @@ function Navbar() {
               />
             </Link>
 
-            <div
-              onClick={() => change()}
-              className="btn change"
-              style={{
-                backgroundColor: "rgb(255,192,203)",
-                color: "rgb(170, 51, 106)",
-                fontWeight: "bold",
-              }}
-            >
-              <small>ADD</small>
-            </div>
+            
           </div>
         </div>
       </nav>
 
+      <nav className="navbar navbar-expand-sm nav-lighter" style={{ backgroundColor: "rgb(255,192,203)" }} >
+        <div className="container-fluid">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavbar"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul className="nav2 navbar-nav container justify-content-evenly">
+              <li className="nav-item">
+                <Link className="nav-link" to="#">
+                  Link
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="#">
+                  Link
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="#">
+                  Link
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Category{" "}
+                </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to="#">
+                      Men
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="#">
+                      Women
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="#">
+                      Children
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }

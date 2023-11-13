@@ -8,7 +8,7 @@ function DetailPage() {
   const [product, setProduct] = useState(null)
 
   useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products/${id}`)
+    axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
     .then((res) => setProduct(res.data))
     .catch((err) => console.log(err))
 
@@ -16,7 +16,7 @@ function DetailPage() {
 
   return (
     <div>
-      <img src={product?.image} alt=''/>
+      <img src={product?.images[0]} alt=''/>
       <h4>{product?.title}</h4>
       <h4>{product?.description}</h4>
       <h4>{product?.price}</h4>
